@@ -19,7 +19,7 @@ router.post('/:id/checkin', (req, res) => {
 		if(data == undefined){
 			const parking = new Parking()
 			parking.mallId = req.params.id
-			parking.parkingTime = req.body.created_time
+			parking.parkingTime = req.body.entryTime
 			parking.save()
 			.then((data) => res.send('Check-in completed'))
 		}
@@ -44,8 +44,18 @@ router.post('/price', (req, res) => {
 	})
 })
 
-router.post('/:id/checkout', (req, res) => {
-	res.send('Check-out completed')
+router.delete('/:id/checkout', (req, res) => {
+	Parking.findOne({mallId: req.params.id})
+	.then((data) =>{
+		if(data == undefined){
+			res.send('Parking lot hasn\'t been occupied yet')
+		}
+		else{
+			Parking.remove({mallId: req.params.id})
+			.then((data) => res.send('Check-out completed'))
+		}
+	})
+	
 })
 
 module.exports = router
