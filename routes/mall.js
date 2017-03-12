@@ -8,6 +8,11 @@ router.get('/', (req,res) => {
 	.then((data) => res.send(data))
 })
 
+router.get('/parking', (req,res) => {
+	Parking.find()
+	.then((data) => res.send(data))
+})
+
 router.get('/:id/checkprice', (req, res) => {
 	let fee = 0
 	res.send('Total fee = '+fee)
