@@ -16,20 +16,27 @@ router.get('/parking', (req,res) => {
 router.get('/:id/checkprice', (req, res) => {
 	Parking.findOne({mallId: req.params.id})
 	.then((data) => {
-		if(data === undefined){
+		if(data === (undefined || null)){
 			res.send('Parking lot hasn\'t been occupied yet')
 		}
 		else{
-			const entryTime = data.entryTime.getTime()
-			const currentTime = new Date().getTime()
+			const entryTime = data.entryTime
+			const currentTime = new Date()
 			console.log('entry time : ' + entryTime)
 			console.log('current time : ' + currentTime)
 	
-			const duration = (currentTime - entryTime)/(1000*60)
+			const duration = (currentTime.getTime() - entryTime.getTime())/(1000*60)
 			console.log('duration : ' + duration)
 	
-			let fee = 0
-			res.send('Total fee = '+duration)
+			Mall.findOne({id: req.params.id})
+			.then((data) => {
+				for (let key in data.fee) {
+					if(key >= duration){
+						res.send('Total fee = '+data.fee[key])
+					}
+				}
+				res.send('Total fee is exceed limit. Please contact our manager.')			
+			})
 		}
 	})
 })
@@ -37,7 +44,7 @@ router.get('/:id/checkprice', (req, res) => {
 router.post('/:id/checkin', (req, res) => {
 	Parking.findOne({mallId: req.params.id})
 	.then((data) =>{
-		if(data === undefined){
+		if(data === (undefined || null)){
 			const parking = new Parking()
 			parking.mallId = req.params.id
 			parking.entryTime = req.body.entryTime
@@ -53,7 +60,7 @@ router.post('/:id/checkin', (req, res) => {
 router.post('/price', (req, res) => {
 	Mall.findOne({id: req.body.id})
 	.then((data) => {
-		if(data === undefined){
+		if(data === (undefined || null)){
 			const price = new Mall (req.body)
 			price.save()
 			.then((data) => res.send(data))
@@ -68,7 +75,7 @@ router.post('/price', (req, res) => {
 router.delete('/:id/checkout', (req, res) => {
 	Parking.findOne({mallId: req.params.id})
 	.then((data) =>{
-		if(data === undefined){
+		if(data === (undefined || null)){
 			res.send('Parking lot hasn\'t been occupied yet')
 		}
 		else{
