@@ -88,4 +88,18 @@ router.delete('/:id/checkout', (req, res) => {
 	
 })
 
+router.delete('/:id/price', (req, res) => {
+	Mall.findOne({id: req.params.id})
+	.then((data) =>{
+		if(data === (undefined || null)){
+			res.send('This mall hasn\'t been added yet')
+		}
+		else{
+			Mall.remove({id: req.params.id})
+			.then((data) => res.send('Delete successfully'))
+		}
+	})
+	
+})
+
 module.exports = router
