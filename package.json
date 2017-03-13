@@ -11,7 +11,7 @@
     "url": "git+https://github.com/melpst/parking-calculator.git"
   },
   "author": "Jitlada Supreeyaporn",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/melpst/parking-calculator/issues"
   },
