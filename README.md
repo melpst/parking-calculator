@@ -1,6 +1,7 @@
 # Parking-calculator
 
 Parking-calculator is a set of APIs that calculate parking fee for each mall such as Paragon, Central World, and Central Ladprao.
+Note : I have included python codes within this project which could generate fee table for those malls.
 
 # Installation
 ```
