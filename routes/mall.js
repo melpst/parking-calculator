@@ -41,6 +41,21 @@ router.get('/:id/checkprice', (req, res) => {
 	})
 })
 
+router.post('/price', (req, res) => {
+	Mall.findOne({id: req.body.id})
+	.then((data) => {
+		if(data === (undefined || null)){
+			const price = new Mall (req.body)
+			price.save()
+			.then((data) => res.send('Added successfully'))
+		}
+		else{
+			res.send('This mall has been added already')
+		}
+		
+	})
+})
+
 router.post('/:id/checkin', (req, res) => {
 	Parking.findOne({mallId: req.params.id})
 	.then((data) =>{
@@ -57,20 +72,7 @@ router.post('/:id/checkin', (req, res) => {
 	})
 })
 
-router.post('/price', (req, res) => {
-	Mall.findOne({id: req.body.id})
-	.then((data) => {
-		if(data === (undefined || null)){
-			const price = new Mall (req.body)
-			price.save()
-			.then((data) => res.send(data))
-		}
-		else{
-			res.send('This mall has been added already')
-		}
-		
-	})
-})
+
 
 router.delete('/:id/checkout', (req, res) => {
 	Parking.findOne({mallId: req.params.id})
