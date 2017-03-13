@@ -3,13 +3,13 @@
 Parking-calculator is a set of APIs that calculate parking fee for each mall such as Paragon, Central World, and Central Ladprao.
 Note : I have included python codes within this project which could generate fee table for those malls.
 
-# Installation
+## Installation
 ```
 git clone https://github.com/melpst/parking-calculator.git
 npm install
 ```
 
-# Getting Started
+## Getting Started
 Before you could run this project, you must config file `/credentials/mongolab.js` for using mlab first.
 ```
 module.exports = {
