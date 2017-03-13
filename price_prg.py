@@ -8,4 +8,7 @@ for i in range(30,1441,30):
   		fee += 30
   	else:
   		fee += 60
-  print '"%d": %d,' %(i,fee)
+  if i!=1440:
+    print '"%d": %d,' %(i,fee)
+  else:
+    print '"%d": %d' %(i,fee)
