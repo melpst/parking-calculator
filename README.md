@@ -33,6 +33,7 @@ After run this, you will see `listening in port 3000`
 
 ### GET /mall
 This API will return all malls' fee table.
+
 Example link : `localhost:3000/mall/`
 
 Response body
@@ -59,6 +60,7 @@ Response body
 ### GET /mall/parking
 This API will return all occupied parking slots.
 Note: can be parked one car per mall, so returned object length will be equal to number of malls.
+
 Example link : `localhost:3000/mall/parking`
 
 Response body
@@ -86,7 +88,8 @@ Response body
 ```
 
 ### GET /mall/:id/checkprice
-This API will return parking fee of car that parked in mall id `:id`
+This API will return parking fee of car that parked in mall id `:id`.
+
 Example link : `localhost:3000/mall/1/checkprice`
 
 Response
@@ -103,6 +106,7 @@ Total fee is exceed limit. Please contact our manager.
 
 ### POST /mall/price
 This API use for adding fee table into database.
+
 Example link : `localhost:3000/mall/price`
 
 Request body
@@ -132,6 +136,7 @@ This mall has been added already
 
 ### POST /mall/:id/checkin
 This API use for occupying parking slot.
+
 Example link : `localhost:3000/mall/2/checkin`
 
 Request body
@@ -150,7 +155,8 @@ Parking slot is occupied
 ```
 
 ### DELETE /mall/:id/checkout
-This API use for remove car from parking slot
+This API use for remove car from parking slot.
+
 Example link : `localhost:3000/mall/1/checkout`
 
 Response
@@ -163,7 +169,8 @@ Parking slot hasn't been occupied yet
 ```
 
 ### DELETE /mall/:id/price
-This API use for delete fee table of mall that has id `:id`
+This API use for delete fee table of mall that has id `:id`.
+
 Example link : `localhost:3000/mall/1/price`
 
 Response
