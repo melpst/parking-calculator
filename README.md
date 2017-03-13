@@ -101,6 +101,8 @@ Total fee is exceed limit. Please contact our manager.
 
 ### POST /mall/price
 This API use for adding fee table into database.
+
+Example link : localhost:3000/mall/price
 Request body
 ```
 {
@@ -128,6 +130,8 @@ This mall has been added already
 
 ### POST /mall/:id/checkin
 This API use for occupying parking slot.
+
+Example link : localhost:3000/mall/2/checkin
 Request body
 ```
 {
@@ -139,11 +143,14 @@ Response
 //if add successfully
 Check-in completed
 
-//if add fee table of mall that already has
+//if parking slot has been occupied
 Parking slot is occupied
 ```
 
 ### DELETE /mall/:id/checkout
+This API use for remove car from parking slot
+
+Example link : localhost:3000/mall/1/checkout
 Response
 ```
 //if can be check-out
