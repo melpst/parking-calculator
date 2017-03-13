@@ -17,7 +17,7 @@ router.get('/:id/checkprice', (req, res) => {
 	Parking.findOne({mallId: req.params.id})
 	.then((data) => {
 		if(data === (undefined || null)){
-			res.send('Parking lot hasn\'t been occupied yet')
+			res.send('Parking slot hasn\'t been occupied yet')
 		}
 		else{
 			const entryTime = data.entryTime
@@ -67,7 +67,7 @@ router.post('/:id/checkin', (req, res) => {
 			.then((data) => res.send('Check-in completed'))
 		}
 		else{
-			res.send('Parking lot is occupied')
+			res.send('Parking slot is occupied')
 		}
 	})
 })
@@ -78,7 +78,7 @@ router.delete('/:id/checkout', (req, res) => {
 	Parking.findOne({mallId: req.params.id})
 	.then((data) =>{
 		if(data === (undefined || null)){
-			res.send('Parking lot hasn\'t been occupied yet')
+			res.send('Parking slot hasn\'t been occupied yet')
 		}
 		else{
 			Parking.remove({mallId: req.params.id})
